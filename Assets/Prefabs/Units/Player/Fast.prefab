@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4876507662286708}
+  - component: {fileID: 114445203403981642}
   m_Layer: 8
   m_Name: Weapon1
   m_TagString: Untagged
@@ -34,6 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4610021141551558}
+  - component: {fileID: 114910262663307830}
   m_Layer: 8
   m_Name: Weapon2
   m_TagString: Untagged
@@ -71,6 +73,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4703539870264898}
+  - component: {fileID: 114392562226097284}
   m_Layer: 8
   m_Name: Weapons
   m_TagString: Untagged
@@ -212,6 +215,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+--- !u!114 &114392562226097284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345055900146970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bbb2b6c84754f542bcc0775b69fcb0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootingSpeed: 2
+--- !u!114 &114445203403981642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1069752490468896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adbac08d9ba9b0c48a7735f1f054e326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileType: 1
+  _projectilePrefab: {fileID: 114444038924418530, guid: c91b8f4d7b4348d4fbb6f920ebc5a0ec,
+    type: 2}
 --- !u!114 &114729858731643288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,6 +252,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f06182358a2fd4399d4da9f3543ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114910262663307830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129916259673326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adbac08d9ba9b0c48a7735f1f054e326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileType: 1
+  _projectilePrefab: {fileID: 114444038924418530, guid: c91b8f4d7b4348d4fbb6f920ebc5a0ec,
+    type: 2}
 --- !u!114 &114986002352294368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,4 +277,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28c968ff0de88141a42278cd3936da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 8
+  _speed: 20

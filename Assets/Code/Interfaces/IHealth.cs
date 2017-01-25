@@ -29,5 +29,9 @@ namespace GameProgramming1
         /// This event is fired every time the health changes
         /// </summary>
         event HealthChangedDelegate HealthChanged;
+
+
+        
+
     }
 }

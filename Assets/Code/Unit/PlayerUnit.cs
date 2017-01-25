@@ -22,5 +22,21 @@ namespace GameProgramming1
             // TODO: Handle dying properly
             gameObject.SetActive(false);
         }
+
+        protected void Update()
+        {
+
+
+            Mover.MoveToDirection(new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical")));
+
+
+            bool shoot = Input.GetButton("Shoot");
+
+            if (shoot)
+            {
+                Weapons.Shoot(ProjectileLayer);
+            }
+
+        }
     }
 }

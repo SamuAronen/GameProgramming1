@@ -11,15 +11,18 @@ namespace GameProgramming1
 
         public IHealth Health { get; protected set; }
         public IMover Mover { get; protected set; }
+        public WeaponController Weapons { get; protected set; }
+
         #endregion
 
         #region Unity Messages
 
         protected virtual void Awake()
         {
-            Health = gameObject.GetOrAddComponent<Health>();
-            Mover = gameObject.GetOrAddComponent<Mover>();
+            InitRequiredComponents();
         }
+
+      
 
         #endregion
 
@@ -41,5 +44,12 @@ namespace GameProgramming1
         public abstract int ProjectileLayer { get; }
 
         #endregion
+
+        private void InitRequiredComponents()
+        {
+            Health = gameObject.GetOrAddComponent<Health>();
+            Mover = gameObject.GetOrAddComponent<Mover>();
+            Weapons = gameObject.GetComponentInChildren<WeaponController>();
+        }
     }
 }
