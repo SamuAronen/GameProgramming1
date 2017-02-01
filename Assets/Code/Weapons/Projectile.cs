@@ -20,9 +20,11 @@ namespace GameProgramming1
 
         #endregion
 
-        private Rigidbody _rigidbody;
+        private IShooter _shooter;
+        public Rigidbody RigidBody { get; private set; }
 
         public ProjectileType Type { get { return _projectileType; } }
+
 
         #region Unity Messages
 
@@ -31,7 +33,7 @@ namespace GameProgramming1
 
         protected virtual void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody>();
+            RigidBody = GetComponent<Rigidbody>();
         }
 
        
@@ -49,22 +51,24 @@ namespace GameProgramming1
                 // TODO Instantiate effect
                 // TODO Add sound effect
 
-                Destroy(gameObject);
+                _shooter.ProjectileHit(this);
             }
 
         }
         #endregion
 
-        public void Shoot(Vector3 direction)
+        public void Shoot(IShooter shooter, Vector3 direction)
         {
-            _rigidbody.AddForce(direction * _shootingForce, ForceMode.Impulse);
+            _shooter = shooter;
+            RigidBody.AddForce(direction * _shootingForce, ForceMode.Impulse);
         }
 
         void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Destroyer"))
             {
-                Destroy(gameObject);
+                _shooter.ProjectileHit(this);
+
             }
         }
     }
