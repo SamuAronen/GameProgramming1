@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 using ProjectileType = GameProgramming1.Projectile.ProjectileType;
 
 
@@ -7,20 +8,26 @@ namespace GameProgramming1.Systems
 {
     public class Prefabs : MonoBehaviour
     {
-        [SerializeField] private List<Projectile> _projectilePrefabs = new List<Projectile>();
+        [SerializeField] private PlayerUnit[] _playerUnitPrefabs;
 
-        public Projectile GetProjectilePrefabByType(ProjectileType projectileType)
+
+        public PlayerUnit GetPlayerUnitPrefab(PlayerUnit.UnitType type)
         {
-            foreach (Projectile projectile in _projectilePrefabs)
+            PlayerUnit result = null;
+
+            for (int i = 0; i < _playerUnitPrefabs.Length; i++)
             {
-                if (projectile.Type == projectileType)
+                if (_playerUnitPrefabs[i].Type == type)
                 {
-                    return projectile;
+                    result = _playerUnitPrefabs[i];
+                    break;
                 }
-
             }
-            return null;
 
+            // Linq
+            //return _playerUnitPrefabs.FirstOrDefault(prefab => prefab.Type == type);
+
+            return result;
         }
     }
 }

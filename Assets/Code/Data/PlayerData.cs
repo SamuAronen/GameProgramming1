@@ -4,7 +4,7 @@
 namespace GameProgramming1.Data
 {
     [Serializable]
-    class PlayerData
+    public class PlayerData
     {
         public enum PlayerId
         {

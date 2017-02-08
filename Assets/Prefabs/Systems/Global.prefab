@@ -154,10 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d9902475ee0594787e414551551aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectAmount: 20
+  _objectAmount: 60
   _objectPrefab: {fileID: 114444038924418530, guid: c91b8f4d7b4348d4fbb6f920ebc5a0ec,
     type: 2}
-  _shouldGrow: 0
+  _shouldGrow: 1
   _projectileType: 1
 --- !u!114 &114281248755424838
 MonoBehaviour:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabs: {fileID: 114370728326468566}
-  _pools: {fileID: 0}
+  _pools: {fileID: 114183752937928960}
 --- !u!114 &114370728326468566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,5 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4edb035060f1a43ae552ca981c9016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectilePrefabs:
-  - {fileID: 114444038924418530, guid: c91b8f4d7b4348d4fbb6f920ebc5a0ec, type: 2}
+  _playerUnitPrefabs:
+  - {fileID: 114146455836050108, guid: a3f7635c0c0b8e6419cbb02128312678, type: 2}
+  - {fileID: 114729858731643288, guid: 1659dd89899a9bd4e850046ec6734afc, type: 2}
+  - {fileID: 114619451204541040, guid: b8205f0c04cf81d4ead839fbe02dfbaa, type: 2}

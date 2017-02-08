@@ -9,6 +9,7 @@ namespace GameProgramming1
     {
         #region Properties
 
+
         public IHealth Health { get; protected set; }
         public IMover Mover { get; protected set; }
         public WeaponController Weapons { get; protected set; }
@@ -40,7 +41,6 @@ namespace GameProgramming1
 
         #region Abstracts
 
-        protected abstract void Die();
         public abstract int ProjectileLayer { get; }
 
         #endregion
@@ -50,6 +50,23 @@ namespace GameProgramming1
             Health = gameObject.GetOrAddComponent<Health>();
             Mover = gameObject.GetOrAddComponent<Mover>();
             Weapons = gameObject.GetComponentInChildren<WeaponController>();
+            Health.HealthChanged += HealthChanged;
+
+           
         }
+
+        private void HealthChanged(object sender, HealthChangedEventArgs args)
+        {
+            if (args.CurrentHealth <= 0)
+            {
+                Die();
+                Health.HealthChanged -= HealthChanged;
+            }
+        }
+
+        protected virtual void Die()
+        {
+        }
+
     }
 }

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using GameProgramming1.Configs;
+using GameProgramming1.Data;
+using UnityEngine;
 
 namespace GameProgramming1
 {
@@ -12,9 +14,19 @@ namespace GameProgramming1
             Heavy = 3
         }
 
+        [SerializeField] private UnitType _type;
+
+        public UnitType Type { get { return _type; } }
+        public PlayerData Data { get; private set; }
+
         public override int ProjectileLayer
         {
-            get { return LayerMask.NameToLayer("PlayerProjectile"); }
+            get { return LayerMask.NameToLayer(Config.PlayerProjectileLayerName); }
+        }
+
+        public void Init(PlayerData playerData)
+        {
+            Data = playerData;
         }
 
         protected override void Die()
