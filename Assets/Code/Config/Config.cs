@@ -19,5 +19,18 @@ namespace GameProgramming1.Configs
         public const string PlayerProjectileLayerName = "PlayerProjectile";
         public const string EnemyProjectileLayerName = "EnemyProjectile";
 
+        public const string InputArrowHorizontalName = "ArrowHorizontal";
+        public const string InputArrowVerticalName = "ArrowVertical";
+        public const string InputArrowShootName = "ArrowShoot";
+
+
+        public const string InputWasdHorizontalName = "WasdHorizontal";
+        public const string InputWasdVerticalName = "WasdVertical";
+        public const string InputWasdShootName = "WasdShoot";
+
+
+        public const string InputJoy1HorizontalName = "Joy1Horizontal";
+        public const string InputJoy1VerticalName = "Joy1Vertical";
+
     }
 }

@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114152012042494906}
   - component: {fileID: 114146455836050108}
   - component: {fileID: 114092214706092076}
+  - component: {fileID: 114118174098452732}
   m_Layer: 8
   m_Name: Balanced
   m_TagString: Untagged
@@ -299,6 +300,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileType: 1
+--- !u!114 &114118174098452732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1871247396598244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ac4aa197acf6d4d8c5a051707a71a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114146455836050108
 MonoBehaviour:
   m_ObjectHideFlags: 1

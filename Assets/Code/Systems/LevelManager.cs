@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using GameProgramming1.Data;
+using GameProgramming1.InputChecks;
 
 namespace GameProgramming1.Systems
 {
@@ -28,14 +29,26 @@ namespace GameProgramming1.Systems
             EnemyUnits = GetComponentInChildren<EnemyUnits>();
 
             // Get player data from GameManager (new data or savd data)
-            PlayerData playerData = new PlayerData()
+            PlayerData playerData1 = new PlayerData()
             {
                 Id = PlayerData.PlayerId.Player1,
                 UnitType = PlayerUnit.UnitType.Heavy,
-                Lives = 3
+                Lives = 3,
+                InputMethodType = InputMethodType.KeyboardArrows
             };
 
-            PlayerUnits.Init(playerData);
+            PlayerData playerData2 = new PlayerData()
+            {
+                Id = PlayerData.PlayerId.Player2,
+                UnitType = PlayerUnit.UnitType.Fast,
+                Lives = 3,
+                InputMethodType = InputMethodType.KeyboardWasd
+            };
+
+
+
+
+            PlayerUnits.Init(playerData1, playerData2);
             EnemyUnits.Init();
         }
     }

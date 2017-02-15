@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using GameProgramming1.Data;
+using GameProgramming1.InputChecks;
 using GameProgramming1.Systems;
 
 namespace GameProgramming1
@@ -25,7 +26,9 @@ namespace GameProgramming1
                     PlayerUnit unit = Instantiate(unitPrefab, transform);
                     unit.transform.position = Vector3.zero;
                     unit.transform.rotation = Quaternion.identity;
+                    unit.GetComponent<InputManager>().InputMethod = playerData.InputMethodType;
                     unit.Init(playerData);
+
 
                     _players.Add(playerData.Id, unit);
                 }

@@ -1,5 +1,6 @@
 ﻿using GameProgramming1.Configs;
 using GameProgramming1.Data;
+using GameProgramming1.InputChecks;
 using UnityEngine;
 
 namespace GameProgramming1
@@ -16,7 +17,11 @@ namespace GameProgramming1
 
         [SerializeField] private UnitType _type;
 
-        public UnitType Type { get { return _type; } }
+        public UnitType Type
+        {
+            get { return _type; }
+        }
+
         public PlayerData Data { get; private set; }
 
         public override int ProjectileLayer
@@ -41,20 +46,14 @@ namespace GameProgramming1
             base.Die();
         }
 
-        protected void Update()
+        public void UpdateUnit(float horizontalInput, float verticalInput, bool shoot)
         {
-
-
-            Mover.MoveToDirection(new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical")));
-
-
-            bool shoot = Input.GetButton("Shoot");
+            Mover.MoveToDirection(new Vector3(horizontalInput, 0, verticalInput));
 
             if (shoot)
             {
                 Weapons.Shoot(ProjectileLayer);
             }
-
         }
     }
 }

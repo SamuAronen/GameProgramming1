@@ -17,6 +17,7 @@ namespace GameProgramming1.Data
 
         public PlayerId Id;
         public PlayerUnit.UnitType UnitType;
+        public InputChecks.InputMethodType InputMethodType;
         // TODO controller type
 
         public int Lives;
