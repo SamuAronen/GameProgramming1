@@ -8,15 +8,18 @@ namespace GameProgramming1.Systems
 {
     public class LevelManager : SceneManager
     {
-
         // Add reference to InputManager here
         public PlayerUnits PlayerUnits { get; private set; }
         public EnemyUnits EnemyUnits { get; private set; }
 
+        public override GameStateType StateType
+        {
+            get { return GameStateType.InGameState; }
+        }
+
         protected void Awake()
         {
             Initialize();
-            
         }
 
         private void Initialize()

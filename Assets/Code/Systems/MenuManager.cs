@@ -8,7 +8,7 @@ namespace GameProgramming1.Systems
     {
         public void StartGame()
         {
-            
+            Global.Instance.GameManager.PerformTransition(GameStateTransitionType.MenuToInGame);
         }
 
         public void LoadGame()
@@ -20,6 +20,11 @@ namespace GameProgramming1.Systems
         public void QuitGame()
         {
             Application.Quit();
+        }
+
+        public override GameStateType StateType
+        {
+            get { return  GameStateType.MenuState;}
         }
     }
 }

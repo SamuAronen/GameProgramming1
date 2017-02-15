@@ -32,7 +32,13 @@ namespace GameProgramming1
         protected override void Die()
         {
             // TODO: Handle dying properly
+            // Instantiate explosion effects
+            // Play sound
+            // Decrease lives
+            // Respawn player
             gameObject.SetActive(false);
+
+            base.Die();
         }
 
         protected void Update()

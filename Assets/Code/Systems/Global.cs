@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameProgramming1.Utility;
 using UnityEngine;
 
 
@@ -37,6 +38,8 @@ namespace GameProgramming1.Systems
             get { return _pools; }
         }
 
+        public GameManager GameManager { get; private set; }
+
         protected void Awake()
         {
             if (_instance == null)
@@ -67,6 +70,9 @@ namespace GameProgramming1.Systems
             {
                 _pools = GetComponentInChildren<Pools>();
             }
+
+            GameManager = gameObject.GetOrAddComponent<GameManager>();
+            GameManager.Init();
         }
     }
 }

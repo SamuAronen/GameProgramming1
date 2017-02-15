@@ -26,6 +26,8 @@ namespace GameProgramming1
             // Handle dying properly. Instantiat explosion, play sound effect etc
             gameObject.SetActive(false);
             EnemyUnits.EnemyDied(this);
+
+            base.Die();
         }
     }
 }
