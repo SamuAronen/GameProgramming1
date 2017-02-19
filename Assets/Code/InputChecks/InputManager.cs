@@ -3,32 +3,25 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using GameProgramming1.Configs;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace GameProgramming1.InputChecks
 {
-
+    // Control method types are added here
     public enum InputMethodType
     {
         KeyboardArrows,
         KeyboardWasd,
-        Joy1
-
+        Joy1,
+        Joy2
     }
 
-    [RequireComponent(typeof(PlayerUnit))]
-    public class InputManager : MonoBehaviour
+    [RequireComponent(typeof(PlayerUnit))] public class InputManager : MonoBehaviour
     {
-     
-
-        public InputMethodType InputMethod{ set { _inputMethod = value; }  }
-
-        private InputMethodType _inputMethod;
         private PlayerUnit _playerUnit;
         private string _horizontalAxisName;
         private string _verticalAxisName;
         private string _shootButton;
-
-
 
         // Use this for initialization
         void Awake()
@@ -36,11 +29,15 @@ namespace GameProgramming1.InputChecks
             _playerUnit = GetComponent<PlayerUnit>();
         }
 
-        void Start()
+        /// <summary>
+        /// Setups Input method which is gotten from PlayerData and set during player instantiation
+        /// </summary>
+        /// <param name="inputMethod">Type of input for the player</param>
+        public void InitInputMethod(InputMethodType inputMethod)
         {
-            switch (_inputMethod)
+            switch (inputMethod)
             {
-                    case InputMethodType.KeyboardArrows:
+                case InputMethodType.KeyboardArrows:
                     _horizontalAxisName = Config.InputArrowHorizontalName;
                     _verticalAxisName = Config.InputArrowVerticalName;
                     _shootButton = Config.InputArrowShootName;
@@ -55,26 +52,33 @@ namespace GameProgramming1.InputChecks
                     break;
 
                 case InputMethodType.Joy1:
-                    _horizontalAxisName = Config.InputArrowHorizontalName;
-                    _verticalAxisName = Config.InputArrowVerticalName;
+                    _horizontalAxisName = Config.InputJoy1HorizontalName;
+                    _verticalAxisName = Config.InputJoy1VerticalName;
+                    _shootButton = Config.InputJoy1ShootName;
                     break;
 
-            }
+                case InputMethodType.Joy2:
+                    _horizontalAxisName = Config.InputJoy2HorizontalName;
+                    _verticalAxisName = Config.InputJoy2VerticalName;
+                    _shootButton = Config.InputJoy2ShootName;
+                    break;
 
+                default:
+                    Debug.LogError("Incorrect input type for " + gameObject.name);
+                    break;
+            }
         }
 
-        // Update is called once per frame
+        // Update input here
         void Update()
         {
-
-
             bool shoot = Input.GetButton(_shootButton);
             float horizontalMovement = Input.GetAxis(_horizontalAxisName);
             float verticalMovement = Input.GetAxis(_verticalAxisName);
 
-
-            _playerUnit.UpdateUnit(horizontalMovement,verticalMovement, shoot);
-
+            // Send the input to PlayerUnit
+            _playerUnit.Move(horizontalMovement, verticalMovement);
+            _playerUnit.Shoot(shoot);
         }
     }
 }

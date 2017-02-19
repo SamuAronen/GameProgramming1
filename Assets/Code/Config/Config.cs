@@ -16,6 +16,8 @@ namespace GameProgramming1.Configs
 
         };
 
+
+        // Strings for input manager are added here
         public const string PlayerProjectileLayerName = "PlayerProjectile";
         public const string EnemyProjectileLayerName = "EnemyProjectile";
 
@@ -29,8 +31,15 @@ namespace GameProgramming1.Configs
         public const string InputWasdShootName = "WasdShoot";
 
 
+
         public const string InputJoy1HorizontalName = "Joy1Horizontal";
         public const string InputJoy1VerticalName = "Joy1Vertical";
+        public const string InputJoy1ShootName = "Joy1Shoot";
+
+
+        public const string InputJoy2HorizontalName = "Joy2Horizontal";
+        public const string InputJoy2VerticalName = "Joy2Vertical";
+        public const string InputJoy2ShootName = "Joy2Shoot";
 
     }
 }

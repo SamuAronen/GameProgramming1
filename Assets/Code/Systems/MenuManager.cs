@@ -8,6 +8,7 @@ namespace GameProgramming1.Systems
     {
         public void StartGame()
         {
+            Debug.Log("Loading game, wait for 5sec");
             Global.Instance.GameManager.PerformTransition(GameStateTransitionType.MenuToInGame);
         }
 

@@ -28,7 +28,9 @@ namespace GameProgramming1.Systems
             PlayerUnits = GetComponentInChildren<PlayerUnits>();
             EnemyUnits = GetComponentInChildren<EnemyUnits>();
 
-            // Get player data from GameManager (new data or savd data)
+            // Gets player data from GameManager (new data or saved data)
+
+            // Currently Creates players and sets their input type here
             PlayerData playerData1 = new PlayerData()
             {
                 Id = PlayerData.PlayerId.Player1,
@@ -45,10 +47,23 @@ namespace GameProgramming1.Systems
                 InputMethodType = InputMethodType.KeyboardWasd
             };
 
+            PlayerData playerData3 = new PlayerData()
+            {
+                Id = PlayerData.PlayerId.Player3,
+                UnitType = PlayerUnit.UnitType.Balanced,
+                Lives = 3,
+                InputMethodType = InputMethodType.Joy1
+            };
 
+            PlayerData playerData4 = new PlayerData()
+            {
+                Id = PlayerData.PlayerId.Player4,
+                UnitType = PlayerUnit.UnitType.Heavy,
+                Lives = 3,
+                InputMethodType = InputMethodType.Joy2
+            };
 
-
-            PlayerUnits.Init(playerData1, playerData2);
+            PlayerUnits.Init(playerData1, playerData2, playerData3, playerData4);
             EnemyUnits.Init();
         }
     }

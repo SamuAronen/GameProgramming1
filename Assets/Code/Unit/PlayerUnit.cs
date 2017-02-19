@@ -46,10 +46,25 @@ namespace GameProgramming1
             base.Die();
         }
 
-        public void UpdateUnit(float horizontalInput, float verticalInput, bool shoot)
+
+        // These methods are added instead of calling Mover and Weapons directly in case if some player unit specific behaviour is needed in the future
+
+        /// <summary>
+        /// Updates the unit movement with information from input manager
+        /// </summary>
+        /// <param name="horizontalInput">horizontal movement</param>
+        /// <param name="verticalInput">vertical movement</param>
+        public void Move(float horizontalInput, float verticalInput)
         {
             Mover.MoveToDirection(new Vector3(horizontalInput, 0, verticalInput));
+        }
 
+        /// <summary>
+        /// Updates the unit shooting with information from input manager
+        /// </summary>
+        /// <param name="shoot">Shoot with the unit</param>
+        public void Shoot(bool shoot)
+        {
             if (shoot)
             {
                 Weapons.Shoot(ProjectileLayer);

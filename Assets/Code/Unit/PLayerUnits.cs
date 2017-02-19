@@ -26,7 +26,7 @@ namespace GameProgramming1
                     PlayerUnit unit = Instantiate(unitPrefab, transform);
                     unit.transform.position = Vector3.zero;
                     unit.transform.rotation = Quaternion.identity;
-                    unit.GetComponent<InputManager>().InputMethod = playerData.InputMethodType;
+                    unit.GetComponent<InputManager>().InitInputMethod(playerData.InputMethodType);
                     unit.Init(playerData);
 
 
