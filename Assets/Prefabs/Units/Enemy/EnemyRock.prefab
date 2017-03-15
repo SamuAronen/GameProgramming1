@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114497992589915052}
   - component: {fileID: 114460104330844354}
   - component: {fileID: 114691331986281398}
+  - component: {fileID: 114271429030598824}
   m_Layer: 9
   m_Name: EnemyRock
   m_TagString: Untagged
@@ -97,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1511160296420838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.37}
+  m_LocalPosition: {x: -2.35, y: 0, z: 10.08}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 4144973861562326}
@@ -159,6 +160,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114271429030598824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511160296420838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de69964708599b942a5e5b92e7ae5d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _direction: 0
+  _arriveDistance: 0.1
 --- !u!114 &114460104330844354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef6f6713180aa94da0d93b0d05af497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _path: {fileID: 0}
 --- !u!114 &114691331986281398
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -31,6 +31,7 @@ namespace GameProgramming1
 
         public void Init(PlayerData playerData)
         {
+            InitRequiredComponents();
             Data = playerData;
         }
 

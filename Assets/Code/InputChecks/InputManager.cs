@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using GameProgramming1.Configs;
+using GameProgramming1.Systems;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -23,6 +25,8 @@ namespace GameProgramming1.InputChecks
         private string _verticalAxisName;
         private string _shootButton;
 
+        private bool _keys = false;
+
         // Use this for initialization
         void Awake()
         {
@@ -41,7 +45,7 @@ namespace GameProgramming1.InputChecks
                     _horizontalAxisName = Config.InputArrowHorizontalName;
                     _verticalAxisName = Config.InputArrowVerticalName;
                     _shootButton = Config.InputArrowShootName;
-
+                    _keys = true;
                     break;
 
                 case InputMethodType.KeyboardWasd:
@@ -79,6 +83,16 @@ namespace GameProgramming1.InputChecks
             // Send the input to PlayerUnit
             _playerUnit.Move(horizontalMovement, verticalMovement);
             _playerUnit.Shoot(shoot);
+
+            PollSave();
+        }
+
+        private void PollSave()
+        {
+            if (_keys && Input.GetKeyDown(KeyCode.F2))
+            {
+                Global.Instance.SaveManager.Save(Global.Instance.CurrentGameData,DateTime.Now.ToString("yyyy-MM-dd_hh--mm-ss"));
+            }
         }
     }
 }

@@ -12,14 +12,14 @@ namespace GameProgramming1
 
         public void Init()
         {
-           //Find all enemies from scene
-            EnemyUnit[] enemies = FindObjectsOfType<EnemyUnit>();
+           ////Find all enemies from scene
+           // EnemyUnit[] enemies = FindObjectsOfType<EnemyUnit>();
 
-            foreach (EnemyUnit enemy in enemies)
-            {
-                _enemies.Add(enemy);
-                enemy.Init(this);
-            }
+           // foreach (EnemyUnit enemy in enemies)
+           // {
+           //     _enemies.Add(enemy);
+           //     enemy.Init(this, null);
+           // }
         }
 
         public void EnemyDied(EnemyUnit enemyUnit)

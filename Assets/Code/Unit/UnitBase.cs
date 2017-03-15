@@ -9,7 +9,6 @@ namespace GameProgramming1
     {
         #region Properties
 
-
         public IHealth Health { get; protected set; }
         public IMover Mover { get; protected set; }
         public WeaponController Weapons { get; protected set; }
@@ -17,13 +16,6 @@ namespace GameProgramming1
         #endregion
 
         #region Unity Messages
-
-        protected virtual void Awake()
-        {
-            InitRequiredComponents();
-        }
-
-      
 
         #endregion
 
@@ -45,14 +37,12 @@ namespace GameProgramming1
 
         #endregion
 
-        private void InitRequiredComponents()
+        protected void InitRequiredComponents()
         {
             Health = gameObject.GetOrAddComponent<Health>();
             Mover = gameObject.GetOrAddComponent<Mover>();
             Weapons = gameObject.GetComponentInChildren<WeaponController>();
             Health.HealthChanged += HealthChanged;
-
-           
         }
 
         private void HealthChanged(object sender, HealthChangedEventArgs args)
@@ -67,6 +57,5 @@ namespace GameProgramming1
         protected virtual void Die()
         {
         }
-
     }
 }

@@ -18,6 +18,7 @@ namespace GameProgramming1.Systems
         Error = 1,
         MenuToInGame,
         InGameToMenu,
+        InGameToInGame,
         InGameToGameOver,
         GameOverToMenu
     }
