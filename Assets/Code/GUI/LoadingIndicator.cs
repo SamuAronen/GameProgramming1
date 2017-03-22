@@ -17,7 +17,7 @@ namespace GameProgramming1.GUI
 
         private List<Tweener> _tweeners = new List<Tweener>();
 
-        protected void Awake()
+        public void Init()
         {
             gameObject.SetActive(false);
             Global.Instance.GameManager.GameStateChanging += HandleGameStateChanging;

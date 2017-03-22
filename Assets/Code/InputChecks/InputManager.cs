@@ -12,14 +12,52 @@ namespace GameProgramming1.InputChecks
     // Control method types are added here
     public enum InputMethodType
     {
+        None = 0,
         KeyboardArrows,
         KeyboardWasd,
         Joy1,
         Joy2
     }
 
-    [RequireComponent(typeof(PlayerUnit))] public class InputManager : MonoBehaviour
+    [RequireComponent(typeof(PlayerUnit))]
+    public class InputManager : MonoBehaviour
     {
+        private static readonly Dictionary<InputMethodType, string> ControllerNames = new Dictionary
+            <InputMethodType, string>()
+            {
+                {InputMethodType.KeyboardArrows, "Arrow Keys"},
+                {InputMethodType.KeyboardWasd, "WASD Keys"},
+                {InputMethodType.Joy1, "Gamepad 1"},
+                {InputMethodType.Joy2, "Gamepad 2"},
+            };
+
+        public static string GetControllerName(InputMethodType inputMethodType)
+        {
+            string result = null;
+
+            if (ControllerNames.ContainsKey(inputMethodType))
+            {
+                result = ControllerNames[inputMethodType];
+            }
+
+            return result;
+        }
+
+        public static InputMethodType GetControllerTypeByName(string controllerName)
+        {
+            InputMethodType result = InputMethodType.None;
+
+            foreach (var kvp in ControllerNames)
+            {
+                if (kvp.Value == controllerName)
+                {
+                    result = kvp.Key;
+                }
+            }
+
+            return result;
+        }
+
         private PlayerUnit _playerUnit;
         private string _horizontalAxisName;
         private string _verticalAxisName;
@@ -89,9 +127,11 @@ namespace GameProgramming1.InputChecks
 
         private void PollSave()
         {
-            if (_keys && Input.GetKeyDown(KeyCode.F2))
+            if (_keys && Input.GetKeyDown(KeyCode.Y))
             {
-                Global.Instance.SaveManager.Save(Global.Instance.CurrentGameData,DateTime.Now.ToString("yyyy-MM-dd_hh--mm-ss"));
+                Debug.Log("SAVE");
+                Global.Instance.SaveManager.Save(Global.Instance.CurrentGameData,
+                    DateTime.Now.ToString("yyyy-MM-dd_hh--mm-ss"));
             }
         }
     }

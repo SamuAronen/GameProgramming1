@@ -33,7 +33,35 @@ namespace GameProgramming1.Systems
             PlayerUnits = GetComponentInChildren<PlayerUnits>();
             EnemyUnits = GetComponentInChildren<EnemyUnits>();
 
+#if UNITY_EDITOR
+            if (Global.Instance.CurrentGameData == null)
+            {
+                Global.Instance.CurrentGameData = new GameData()
+                {
+                    Level = 1,
+                    PlayerDatas = new List<PlayerData>()
+                    {
+                        new PlayerData()
+                        {
+                            Id = PlayerData.PlayerId.Player1,
+                            UnitType = PlayerUnit.UnitType.Heavy,
+                            Lives = 3,
+                            InputMethodType = InputMethodType.KeyboardArrows
+                        },
+                        new PlayerData()
+                        {
+                            Id = PlayerData.PlayerId.Player2,
+                            UnitType = PlayerUnit.UnitType.Fast,
+                            Lives = 3,
+                            InputMethodType = InputMethodType.KeyboardWasd
+                        }
+                    }
+                };
+            }
+#endif
+
             PlayerData[] playerDatas = Global.Instance.CurrentGameData.PlayerDatas.ToArray();
+
 
             PlayerUnits.Init(playerDatas);
 
@@ -82,14 +110,13 @@ namespace GameProgramming1.Systems
                 enemySpawner.Init(EnemyUnits);
             }
 
+
             // All conditions should be parented to LevelManager
             _conditions = GetComponentsInChildren<ConditionBase>();
             foreach (var condition in _conditions)
             {
                 condition.Init(this);
             }
-
-         
         }
 
         public void ConditionMet(ConditionBase condition)

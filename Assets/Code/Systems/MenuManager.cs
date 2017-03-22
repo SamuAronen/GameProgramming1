@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using GameProgramming1.Data;
+using GameProgramming1.GUI;
 using GameProgramming1.InputChecks;
 using UnityEngine;
 
@@ -8,6 +9,20 @@ namespace GameProgramming1.Systems
 {
     public class MenuManager : SceneManager
     {
+        private LoadWindow _loadWindow;
+        private PlayerSettings _playerSettingsWindow;
+        private void Awake()
+        {
+            _loadWindow = GetComponentInChildren<LoadWindow>(true);
+            _loadWindow.Init(this);
+            _loadWindow.Close();
+
+            _playerSettingsWindow = GetComponentInChildren<PlayerSettings>(true);
+            _playerSettingsWindow.Init(this);
+
+            // Todo
+
+        }
         public void StartGame()
         {
             Global.Instance.CurrentGameData = new GameData()
@@ -39,21 +54,28 @@ namespace GameProgramming1.Systems
                 (GameStateTransitionType.MenuToInGame);
         }
 
-        public
-            void LoadGame()
+        public void OpenLoadWindow()
         {
+            _loadWindow.Open();
+        }
+
+        public void LoadGame(string loadFileName)
+        {
+
+            _loadWindow.Close();
+            GameData loadData = Global.Instance.SaveManager.Load(loadFileName);
+            Global.Instance.CurrentGameData = loadData;
+            Global.Instance.GameManager.PerformTransition(GameStateTransitionType.MenuToInGame);
         }
 
 
-        public
-            void QuitGame()
+        public void QuitGame()
         {
             Application.Quit
                 ();
         }
 
-        public override
-            GameStateType StateType
+        public override GameStateType StateType
         {
             get { return GameStateType.MenuState; }
         }
