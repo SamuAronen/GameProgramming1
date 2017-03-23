@@ -50,12 +50,13 @@ namespace GameProgramming1
             if (args.CurrentHealth <= 0)
             {
                 Die();
-                Health.HealthChanged -= HealthChanged;
             }
         }
 
         protected virtual void Die()
         {
+            Health.HealthChanged -= HealthChanged;
+
         }
     }
 }

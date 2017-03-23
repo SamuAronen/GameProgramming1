@@ -13,8 +13,11 @@ namespace GameProgramming1
     {
         private Dictionary<PlayerData.PlayerId, PlayerUnit> _players = new Dictionary<PlayerData.PlayerId, PlayerUnit>();
 
-        public void Init(params PlayerData[] players)
+
+        public void Init(PlayerSpawner spawner, params PlayerData[] players)
         {
+            
+
             foreach (PlayerData playerData in players)
             {
                 // Get Prefab by UnitType
@@ -23,12 +26,11 @@ namespace GameProgramming1
                 if (unitPrefab != null)
                 {
                     // Initialize unit
-                    PlayerUnit unit = Instantiate(unitPrefab, transform);
-                    unit.transform.position = Vector3.zero;
-                    unit.transform.rotation = Quaternion.identity;
+                    PlayerUnit unit = spawner.CreateAndSpawnPlayer(playerData.Id,unitPrefab,transform);
+                  
                     unit.GetComponent<InputManager>().InitInputMethod(playerData.InputMethodType);
                     unit.Init(playerData);
-
+                    
 
                     _players.Add(playerData.Id, unit);
                 }

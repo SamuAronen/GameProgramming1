@@ -10,6 +10,16 @@ namespace GameProgramming1.Systems
 
         [SerializeField] private AsteroidPool _asteroidPool;
 
+        public void Init()
+        {
+            _asteroidPool.Init();
+            foreach (var projectilePool in _projectilePools)
+            {
+               
+                projectilePool.Init();
+            }
+        }
+
         public AsteroidPool AsteroidPool { get { return _asteroidPool; } }
 
 

@@ -6,13 +6,13 @@ using GameProgramming1.Systems.SaveLoad;
 using GameProgramming1.Utility;
 using UnityEngine;
 
-
 namespace GameProgramming1.Systems
 {
     public class Global : MonoBehaviour
     {
         private static Global _instance;
         private static bool _isAppClosing = false;
+
         public static Global Instance
         {
             get
@@ -63,6 +63,7 @@ namespace GameProgramming1.Systems
 
         private void Init()
         {
+            Debug.Log("Global Init");
             DontDestroyOnLoad(gameObject);
 
             if (_prefabs == null)
@@ -75,6 +76,7 @@ namespace GameProgramming1.Systems
                 _pools = GetComponentInChildren<Pools>();
             }
 
+            _pools.Init();
             SaveManager = new SaveManager(new JSONSaveLoad<GameData>());
             GameManager = gameObject.GetOrAddComponent<GameManager>();
             GameManager.Init();
@@ -85,6 +87,4 @@ namespace GameProgramming1.Systems
             _isAppClosing = true;
         }
     }
-
-   
 }

@@ -30,8 +30,7 @@ namespace GameProgramming1
         /// </summary>
         event HealthChangedDelegate HealthChanged;
 
-
-        
-
+        void SetInvulnerable(float timeSeconds);
+        void ResetHealth();
     }
 }

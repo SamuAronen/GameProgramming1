@@ -7,6 +7,8 @@ namespace GameProgramming1.Level
 {
     public abstract class ConditionBase : MonoBehaviour
     {
+        protected bool _conditionProcessing = false;
+
       public LevelManager LevelManager { get; private set; }
 
         public bool IsConditionMet { get; protected set; }
@@ -15,6 +17,11 @@ namespace GameProgramming1.Level
         {
             LevelManager = levelManager;
             Initialize();
+        }
+
+        public void ConditionProcessFinished()
+        {
+            _conditionProcessing = false;
         }
 
         protected abstract void Initialize();

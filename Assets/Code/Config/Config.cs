@@ -20,6 +20,8 @@ namespace GameProgramming1.Configs
         // Strings for input manager are added here
         public const string PlayerProjectileLayerName = "PlayerProjectile";
         public const string EnemyProjectileLayerName = "EnemyProjectile";
+        public const string PlayerUnitLayerName = "Player";
+        public const string EnemyUnitLayerName = "Enemy";
 
         public const string InputArrowHorizontalName = "ArrowHorizontal";
         public const string InputArrowVerticalName = "ArrowVertical";

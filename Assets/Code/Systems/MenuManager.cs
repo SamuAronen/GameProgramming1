@@ -43,6 +43,21 @@ namespace GameProgramming1.Systems
                         UnitType = PlayerUnit.UnitType.Fast,
                         Lives = 3,
                         InputMethodType = InputMethodType.KeyboardWasd
+                    },
+
+                     new PlayerData()
+                    {
+                        Id = PlayerData.PlayerId.Player3,
+                        UnitType = PlayerUnit.UnitType.Balanced,
+                        Lives = 3,
+                        InputMethodType = InputMethodType.KeyboardArrows
+                    },
+                    new PlayerData()
+                    {
+                        Id = PlayerData.PlayerId.Player4,
+                        UnitType = PlayerUnit.UnitType.Fast,
+                        Lives = 3,
+                        InputMethodType = InputMethodType.KeyboardWasd
                     }
                 }
             };

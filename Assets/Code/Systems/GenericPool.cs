@@ -10,13 +10,12 @@ namespace GameProgramming1.Systems
         [SerializeField] private T _objectPrefab;
         [SerializeField] private bool _shouldGrow;
 
-
         private List<T> _pool;
         private List<bool> _isActive;
 
-
-        private void Awake()
+        public void Init()
         {
+
             _pool = new List<T>(_objectAmount);
             _isActive = new List<bool>(_objectAmount);
 
@@ -86,6 +85,15 @@ namespace GameProgramming1.Systems
             }
         }
 
+        public void ReturnAllToPool()
+        {
+            for (int i = 0; i < _pool.Count; i++)
+            {
+                _isActive[i] = false;
+                if (_pool[i])
+                Deactivate(_pool[i]);
+            }
+        }
 
         protected virtual void Deactivate(T item)
         {

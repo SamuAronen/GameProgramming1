@@ -16,7 +16,9 @@ namespace GameProgramming1
         }
 
         [SerializeField] private UnitType _type;
+        [SerializeField] private float _invulnerabilityTime = 1;
 
+        private PlayerSpawner _spawner;
         public UnitType Type
         {
             get { return _type; }
@@ -31,8 +33,10 @@ namespace GameProgramming1
 
         public void Init(PlayerData playerData)
         {
+            _spawner = FindObjectOfType<PlayerSpawner>();
             InitRequiredComponents();
             Data = playerData;
+            Health.SetInvulnerable(_invulnerabilityTime);
         }
 
         protected override void Die()
@@ -42,11 +46,26 @@ namespace GameProgramming1
             // Play sound
             // Decrease lives
             // Respawn player
-            gameObject.SetActive(false);
 
-            base.Die();
+            if (Data.Lives > 1)
+            {
+
+                Data.Lives--;
+                Health.ResetHealth();
+                Debug.Log("Lives Remaining:" + Data.Lives);
+                _spawner.ReSpawnPlayer(this);
+                Health.SetInvulnerable(_invulnerabilityTime);
+            }
+            else
+            {
+                Debug.Log(Data.Id + "Is Fully Dead");
+                gameObject.SetActive(false);
+
+                // Base Removes health changed event
+                base.Die();
+
+            }
         }
-
 
         // These methods are added instead of calling Mover and Weapons directly in case if some player unit specific behaviour is needed in the future
 

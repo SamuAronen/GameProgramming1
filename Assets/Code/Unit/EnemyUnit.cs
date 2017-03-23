@@ -16,6 +16,8 @@ namespace GameProgramming1
 
         public EnemyUnits EnemyUnits{get; private set; }
 
+        [SerializeField] private int _collisionDamageToOthers = 50;
+
         public override int ProjectileLayer
         {
             get { return LayerMask.NameToLayer(Config.EnemyProjectileLayerName); }
@@ -37,6 +39,17 @@ namespace GameProgramming1
             EnemyUnits.EnemyDied(this);
 
             base.Die();
+        }
+
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            Debug.Log("Collision");
+            if (collision.gameObject.layer == LayerMask.NameToLayer(Config.PlayerUnitLayerName))
+            {
+                collision.gameObject.GetComponent<IHealth>().TakeDamage(_collisionDamageToOthers);
+                Die();
+            }
         }
     }
 }
