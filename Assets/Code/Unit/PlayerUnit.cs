@@ -58,6 +58,8 @@ namespace GameProgramming1
             }
             else
             {
+                Data.Lives--;
+                Debug.Log("Lives Remaining:" + Data.Lives);
                 Debug.Log(Data.Id + "Is Fully Dead");
                 gameObject.SetActive(false);
 
