@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameProgramming1.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,10 +10,14 @@ namespace GameProgramming1.GUI
     public class PlayerUnitSelector : MonoBehaviour
     {
         private Dropdown _dropdown;
+
+        public PlayerData.PlayerId PlayerId { get; private set; }
         public PlayerUnit.UnitType SelectedUnitType { get; private set; }
 
-        public void Init()
+        public void Init(PlayerData.PlayerId playerId)
         {
+            PlayerId = playerId;
+
             _dropdown = GetComponentInChildren<Dropdown>(true);
             _dropdown.ClearOptions();
 
@@ -27,6 +32,9 @@ namespace GameProgramming1.GUI
 
              _dropdown.AddOptions(optionDataList);
             _dropdown.onValueChanged.AddListener(OnValueChanged);
+
+            _dropdown.value = 0;
+            OnValueChanged(0);
         }
 
         private void OnValueChanged(int index)

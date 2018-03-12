@@ -43,6 +43,11 @@ namespace GameProgramming1
             Mover = gameObject.GetOrAddComponent<Mover>();
             Weapons = gameObject.GetComponentInChildren<WeaponController>();
             Health.HealthChanged += HealthChanged;
+
+            if (Weapons != null)
+            {
+                Weapons.Init();
+            }
         }
 
         private void HealthChanged(object sender, HealthChangedEventArgs args)

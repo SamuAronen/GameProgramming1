@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using GameProgramming1.Data;
 using UnityEngine;
+using System;
 
 namespace GameProgramming1.Systems.SaveLoad
 {
@@ -15,6 +16,20 @@ namespace GameProgramming1.Systems.SaveLoad
         public string FileExtension
         {
             get { return _saveLoad.FileExtension; }
+        }
+
+        private const string LanguageKey = "Language";
+
+        public static LangCode Language
+        {
+            get
+            {
+                return (LangCode) Enum.Parse(typeof(LangCode),
+                    PlayerPrefs.GetString(LanguageKey,
+                        LangCode.EN.ToString()));
+            }
+
+            set { PlayerPrefs.SetString(LanguageKey, value.ToString()); }
         }
 
         public SaveManager(ISaveLoad<GameData> saveLoad)

@@ -66,6 +66,8 @@ namespace GameProgramming1.Systems
             Debug.Log("Global Init");
             DontDestroyOnLoad(gameObject);
 
+            Localization.LoadLanguage(SaveManager.Language);
+
             if (_prefabs == null)
             {
                 _prefabs = GetComponentInChildren<Prefabs>();

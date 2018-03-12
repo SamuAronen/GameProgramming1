@@ -19,55 +19,79 @@ namespace GameProgramming1.Systems
 
             _playerSettingsWindow = GetComponentInChildren<PlayerSettings>(true);
             _playerSettingsWindow.Init(this);
+            _playerSettingsWindow.Close();
 
             // Todo
 
         }
-        public void StartGame()
+
+        public void StartGame(List<PlayerData> playerDatas)
         {
+            _playerSettingsWindow.Close();
+
+            // Create a new GameData object and Initialize if with playerDatas list.
             Global.Instance.CurrentGameData = new GameData()
             {
                 Level = 1,
-                PlayerDatas = new List<PlayerData>()
-                {
-                    new PlayerData()
-                    {
-                        Id = PlayerData.PlayerId.Player1,
-                        UnitType = PlayerUnit.UnitType.Heavy,
-                        Lives = 3,
-                        InputMethodType = InputMethodType.KeyboardArrows
-                    },
-                    new PlayerData()
-                    {
-                        Id = PlayerData.PlayerId.Player2,
-                        UnitType = PlayerUnit.UnitType.Fast,
-                        Lives = 3,
-                        InputMethodType = InputMethodType.KeyboardWasd
-                    },
-
-                     new PlayerData()
-                    {
-                        Id = PlayerData.PlayerId.Player3,
-                        UnitType = PlayerUnit.UnitType.Balanced,
-                        Lives = 3,
-                        InputMethodType = InputMethodType.Joy1
-                    },
-                    new PlayerData()
-                    {
-                        Id = PlayerData.PlayerId.Player4,
-                        UnitType = PlayerUnit.UnitType.Fast,
-                        Lives = 3,
-                        InputMethodType = InputMethodType.Joy2
-                    }
-                }
+                PlayerDatas = playerDatas
             };
 
-            Debug.Log
-            (
-                "Loading game, wait for 5sec");
-            Global.Instance.GameManager.PerformTransition
-                (GameStateTransitionType.MenuToInGame);
+            Global.Instance.GameManager.PerformTransition(GameStateTransitionType.MenuToInGame);
+
+
         }
+
+
+        public void OpenStartGameWindow()
+        {
+            _playerSettingsWindow.Open();
+        }
+
+        //public void StartGame()
+        //{
+        //    Global.Instance.CurrentGameData = new GameData()
+        //    {
+        //        Level = 1,
+        //        PlayerDatas = new List<PlayerData>()
+        //        {
+        //            new PlayerData()
+        //            {
+        //                Id = PlayerData.PlayerId.Player1,
+        //                UnitType = PlayerUnit.UnitType.Heavy,
+        //                Lives = 3,
+        //                InputMethodType = InputMethodType.KeyboardArrows
+        //            },
+        //            new PlayerData()
+        //            {
+        //                Id = PlayerData.PlayerId.Player2,
+        //                UnitType = PlayerUnit.UnitType.Fast,
+        //                Lives = 3,
+        //                InputMethodType = InputMethodType.KeyboardWasd
+        //            },
+
+        //             new PlayerData()
+        //            {
+        //                Id = PlayerData.PlayerId.Player3,
+        //                UnitType = PlayerUnit.UnitType.Balanced,
+        //                Lives = 3,
+        //                InputMethodType = InputMethodType.Joy1
+        //            },
+        //            new PlayerData()
+        //            {
+        //                Id = PlayerData.PlayerId.Player4,
+        //                UnitType = PlayerUnit.UnitType.Fast,
+        //                Lives = 3,
+        //                InputMethodType = InputMethodType.Joy2
+        //            }
+        //        }
+        //    };
+
+        //    Debug.Log
+        //    (
+        //        "Loading game, wait for 5sec");
+        //    Global.Instance.GameManager.PerformTransition
+        //        (GameStateTransitionType.MenuToInGame);
+        //}
 
         public void OpenLoadWindow()
         {

@@ -12,14 +12,16 @@ namespace GameProgramming1
 
         // TODO add support for boosters (increase shooting speed etc)
 
-        #region Unity Messages
-
-        protected void Awake()
+        public void Init()
         {
             _weapons = GetComponentsInChildren<Weapon>();
-            _shootingRate = 1/_shootingSpeed;
+            _shootingRate = 1 / _shootingSpeed;
             _previouslyShot = _shootingRate;
         }
+
+
+        #region Unity Messages
+
 
 
         protected void Update()

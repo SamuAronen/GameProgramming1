@@ -43,5 +43,6 @@ namespace GameProgramming1.Configs
         public const string InputJoy2VerticalName = "Joy2Vertical";
         public const string InputJoy2ShootName = "Joy2Shoot";
 
+        public const int Lives = 3;
     }
 }
